@@ -6,9 +6,9 @@
 		#square {
 			margin-top: 20px;
 			margin-left: 100px;
-			height: 200px;
-			width: 200px;
-			background: red;
+			height: 500px;
+			width: 900px;
+			background: green;
 		}
 		div {
 			margin-bottom: 20px;
@@ -23,17 +23,11 @@
 	</head>
 <body>
 
-<div id="test" class="t_class"></div>
-
-<script>
-document.getElementById("test").innerHTML = "Hello by ID";
-// document.getElementsByTagName("div")[0].innerHTML = "Hello by Tag";
-// document.getElementsByClassName("t_class")[0].innerHTML = "Hello by Class";
-</script>
+<h5>When you click this rectangle, something interesting will happen!</h5>
 <div id="square" onclick="show_sentence()"></div>
 
 	<div>
-		<p> Hello, this is inside a PPPPP tag. </p>
+		<hide> Really Really cool text </hide>
 	</div>
 
 	<!-- for your exercise, comment this line out.  -->
@@ -41,8 +35,9 @@ document.getElementById("test").innerHTML = "Hello by ID";
 
 <script>
 function show_sentence(){
-	document.getElementById("square").innerHTML = document.getElementsByTagName("p")[0].innerHTML;
+	document.getElementById("square").innerHTML = document.getElementsByTagName("hide")[0].innerHTML;
 }
 </script>
-
+<h6>If you are done, you can return to the home page, <input type="button" onclick="location.href='https://umdbrett.github.io/';" value="by clicking here"/></h6>
+</body>
 </html>
