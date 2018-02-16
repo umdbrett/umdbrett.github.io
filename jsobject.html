@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<title>Brett's Github Javascript - Javascript Objects</title>
+		<link rel="stylesheet" href="https://umdbrett.github.io/main-php.css">
+		<script>
+			var favoritesongs = [
+				{
+					"Artist First": "Kendrick",
+					"Artist Last": "Lamar",
+					"Song Name": "The Weekend",
+					"Genre": "Rap",
+					"Publication Year": "2018"
+				},
+				{
+					"Artist First": "Luke",
+					"Artist Last": "Bryan",
+					"Song Name": "Dirt Road Diary",
+					"Genre": "Country",
+					"Publication Year": "2013"
+				},
+				{
+					"Artist First": "Cole",
+					"Artist Last": "Swindell",
+					"Song Name": "Midle of a Memory",
+					"Genre": "Country",
+					"Publication Year": "2016"
+				},
+				{
+					"Artist First": "Cody",
+					"Artist Last": "Johnson",
+					"Song Name": "Kiss Goodbye",
+					"Genre": "Country",
+					"Publication Year": "2016"
+				},
+				{
+					"Artist First": "Travi$",
+					"Artist Last": "Scott",
+					"Song Name": "Don't Play",
+					"Genre": "Rap",
+					"Publication Year": "2014"
+				}
+			];
+		</script>
+	</head>
+	<body>
+		<h3>Favorite Songs: 5 Objects Containing Favorite Songs</h3>
+		<table id="songs"></table><br><br>
+		<h4>Favorite Song Information</h2>
+		<table>
+			<thead>
+				<tr><th>Artist Name</th><th>Song Name</th><th>Genre</th><th>Publication Date</th></tr>
+			</thead>
+			<tbody id="displaysongs">
+				
+			</tbody>
+		</table>
+		<script>
+			var text = "";
+			var newtext = "";
+			/*var x;       + " " + obj['Artist Last']*/
+			for (var x in favoritesongs) {
+				if (favoritesongs.hasOwnProperty(x)) {
+					var obj = favoritesongs[x];
+					for (var y in obj) {
+						if (obj.hasOwnProperty(y)) {
+							text += "<tr><td align='right'>" + y + "</td><td>" + obj[y] + "</td></tr>";
+						}
+					}
+					newtext += "<tr><td>" + obj['Artist First'] + " " + obj['Artist Last'] + "</td><td>" + obj['Song Name'] + "</td><td>" + obj['Genre'] + "</td><td>" + obj['Publication Year'] + "</td></tr>";
+				}
+			}
+			document.getElementById("songs").innerHTML = text;
+			document.getElementById("displaysongs").innerHTML = newtext;
+		</script>
+	</body>
+</html>
