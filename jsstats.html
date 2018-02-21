@@ -1,0 +1,145 @@
+<html>
+	<head>
+		<style>
+{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+{
+    border: 8px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    /*border: 2px solid #1c1c1c;*/
+    text-align: middle;
+    background-color: #b50101;
+    color: white;
+}
+tr:nth-child(even){background-color: #f2f2f2;}
+tr:hover {background-color: #ddd;}
+	</style>
+		<title>Brett's Github Javascript - Javascript Objects</title>
+		<link rel="stylesheet" href="https://umdbrett.github.io/main-php.css">
+		<script>
+			var favoritesongs = [
+				{
+					"Artist First": "Kendrick",
+					"Artist Last": "Lamar",
+					"Song Name": "The Weekend",
+					"Genre": "Rap",
+					"Publication Year": "2018",
+					"Duration in Seconds": 195
+				},
+				{
+					"Artist First": "Luke",
+					"Artist Last": "Bryan",
+					"Song Name": "Dirt Road Diary",
+					"Genre": "Country",
+					"Publication Year": "2013",
+					"Duration in Seconds": 240
+				},
+				{
+					"Artist First": "Cole",
+					"Artist Last": "Swindell",
+					"Song Name": "Midle of a Memory",
+					"Genre": "Country",
+					"Publication Year": "2016",
+					"Duration in Seconds": 205
+				},
+				{
+					"Artist First": "Cody",
+					"Artist Last": "Johnson",
+					"Song Name": "Kiss Goodbye",
+					"Genre": "Country",
+					"Publication Year": "2016",
+					"Duration in Seconds": 170
+				},
+				{
+					"Artist First": "Travi$",
+					"Artist Last": "Scott",
+					"Song Name": "Don't Play",
+					"Genre": "Rap",
+					"Publication Year": "2014",
+					"Duration in Seconds": 270
+				}
+			];
+		</script>
+	</head>
+	<body>
+		<h3>Favorite Songs: 5 Objects Containing Favorite Songs</h3>
+		<table id="songs"></table><br><br>
+		<h4>Favorite Song Information</h2>
+		<table>
+			<thead>
+				<tr><th>Artist Name</th><th>Song Name</th><th>Genre</th><th>Publication Date</th><th>Duration In Seconds</th></tr>
+			</thead>
+			<tbody id="displaysongs">
+				
+			</tbody>
+		</table>
+		<table id="statistics"></table><br><br>
+		<h4>Song Statistics</h2>
+		<table>
+			<thead>
+				<tr><th># of Songs</th><th># of Artists</th><th>Duration of Playlist</th></tr>
+			</thead>
+			<tbody id="displaystatistics">
+				
+			</tbody>
+		</table>
+		<script>
+			var text = "";
+			var newtext = "";
+			/*var x;       + " " + obj['Artist Last']*/
+			for (var x in favoritesongs) {
+				if (favoritesongs.hasOwnProperty(x)) {
+					var obj = favoritesongs[x];
+					for (var y in obj) {
+						if (obj.hasOwnProperty(y)) {
+							text += "<tr><td align='right'>" + y + "</td><td>" + obj[y] + "</td></tr>";
+						}
+					}
+					newtext += "<tr><td>" + obj['Artist First'] + " " + obj['Artist Last'] + "</td><td>" + obj['Song Name'] + "</td><td>" + obj['Genre'] + "</td><td>" + obj['Publication Year'] + "</td><td>" + obj['Duration in Seconds'] +"</td></tr>";
+				}
+			}
+			document.getElementById("songs").innerHTML = text;
+			document.getElementById("displaysongs").innerHTML = newtext;
+		</script>
+		<script>
+			function songCount(favoritesongs) {
+			var songs = 0;
+			for (var i = 0; i < favoritesongs.length; i++) {
+				songs++;
+			}
+			return songs;
+			}
+
+			function artistCount(favoritesongs) {
+			var artists = new Set();
+			for (var i in favoritesongs){
+				var y = favoritesongs[i];
+				artists.add(y['Artist Last']);
+			}
+			return artists.size;
+			}
+
+			function durationCount(favoritesongs) {
+			var duration = 0;
+			for (var i in favoritesongs){
+				var y = favoritesongs[i];
+				var time = y['Duration in Seconds']
+				duration = duration + time;
+			}
+			return duration / 60;
+			}
+			var songscounted = "";
+			songscounted = "<tr><td>" + songCount(favoritesongs) + "</td><td>" + artistCount(favoritesongs) + "</td><td>" + durationCount(favoritesongs) + " Minutes Long" + "</td></tr>";
+			document.getElementById("displaystatistics").innerHTML = songscounted;
+		</script>
+	</body>
+</html>
